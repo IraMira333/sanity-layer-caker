@@ -3,13 +3,14 @@ import { POST_QUERY } from "@/sanity/lib/queries";
 import { Post } from "@/components/Post";
 import { notFound } from "next/navigation";
 
-type PostIndexProps = { params: { slug: string | Promise<string> } };
+type PostIndexProps = { params: { slug: string } };
 
 const options = { next: { revalidate: 60 } };
 
 export default async function Page({ params }: PostIndexProps) {
-  const slug = await params.slug;
+  const { slug } = params;
   const post = await client.fetch(POST_QUERY, { slug }, options);
+
   if (!post) {
     notFound();
   }
