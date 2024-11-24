@@ -3,7 +3,7 @@ import { POST_QUERY } from "@/sanity/lib/queries";
 import { Post } from "@/components/Post";
 import { notFound } from "next/navigation";
 
-type PostIndexProps = { params: { slug: string } };
+type PostIndexProps = { params: { slug: string | Promise<string> } };
 
 const options = { next: { revalidate: 60 } };
 
