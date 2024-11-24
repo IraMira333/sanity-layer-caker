@@ -19,6 +19,7 @@ export default async function Page({
   const post = await sanityFetch({
     query: POST_QUERY,
     params,
+    revalidate: 3600,
   });
 
   if (!post) {
