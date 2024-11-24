@@ -1,4 +1,4 @@
-import { client, sanityFetch } from "@/sanity/lib/client";
+import { sanityFetch } from "@/sanity/lib/client";
 import { POSTS_QUERY } from "@/sanity/lib/queries";
 import { PostCard } from "@/components/PostCard";
 import { Title } from "@/components/Title";
