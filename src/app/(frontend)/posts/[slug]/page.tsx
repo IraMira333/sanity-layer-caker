@@ -1,10 +1,15 @@
 import { client } from "@/sanity/lib/client";
-import { POST_QUERY } from "@/sanity/lib/queries";
+import { POST_QUERY, POSTS_SLUGS_QUERY } from "@/sanity/lib/queries";
 import { Post } from "@/components/Post";
 import { notFound } from "next/navigation";
 
-// type PostIndexProps = { params: { slug: string } };
+export async function generateStaticParams() {
+  const slugs = await client
+    .withConfig({ useCdn: false })
+    .fetch(POSTS_SLUGS_QUERY);
 
+  return slugs;
+}
 const options = { next: { revalidate: 60 } };
 
 export default async function Page({
