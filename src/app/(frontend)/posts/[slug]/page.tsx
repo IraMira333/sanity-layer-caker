@@ -8,8 +8,8 @@ type PostIndexProps = { params: { slug: string | Promise<string> } };
 const options = { next: { revalidate: 60 } };
 
 export default async function Page({ params }: PostIndexProps) {
-  const post = await client.fetch(POST_QUERY, params, options);
-
+  const slug = await params.slug;
+  const post = await client.fetch(POST_QUERY, { slug }, options);
   if (!post) {
     notFound();
   }
