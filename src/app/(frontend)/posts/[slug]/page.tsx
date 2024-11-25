@@ -16,9 +16,10 @@ export default async function Page({
 }: {
   params: Promise<{ slug: string }>;
 }) {
+  const { slug } = await params;
   const post = await sanityFetch({
     query: POST_QUERY,
-    params,
+    params: { slug },
     revalidate: 3600,
   });
 
