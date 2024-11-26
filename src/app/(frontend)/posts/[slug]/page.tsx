@@ -20,7 +20,7 @@ export default async function Page({
   const post = await sanityFetch({
     query: POST_QUERY,
     params: { slug },
-    revalidate: 60,
+    tags: [`post:${slug}`, "author", "category"],
   });
 
   if (!post) {

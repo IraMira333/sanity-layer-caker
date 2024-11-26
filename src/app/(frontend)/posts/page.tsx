@@ -4,7 +4,10 @@ import { PostCard } from "@/components/PostCard";
 import { Title } from "@/components/Title";
 
 export default async function Page() {
-  const posts = await sanityFetch({ query: POSTS_QUERY, revalidate: 60 });
+  const posts = await sanityFetch({
+    query: POSTS_QUERY,
+    tags: ["post", "author", "category"],
+  });
 
   return (
     <main className="container mx-auto grid grid-cols-1 gap-6 p-12">
